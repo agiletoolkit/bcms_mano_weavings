@@ -10,3 +10,6 @@ db/schema.rb
 *.gem
 .dotest
 public/cache
+*.tmp*~
+.loadpath
+.project
