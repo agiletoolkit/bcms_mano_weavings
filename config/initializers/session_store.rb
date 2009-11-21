@@ -6,7 +6,7 @@
 # no regular words or you'll be exposed to dictionary attacks.
 ActionController::Base.session = {
   :key         => '_bcms_mano_weavings_session',
-  :secret      => 'a1b96c4c43e636677b2fc92c992507a877feaf8af51075b042130c8b33ffa88606c35d5a434110687a47d69daf6fdd39dc4005d0ecfb9b64f23ee36746cc7eb8'
+  :secret      => 'b685fe34ac2f620f9b6001b462e9eb6e54e6a781f8f588f2336afafd4b04a5f37e555d6e8d8919ac30260d7b56246df96cb15804d86e4f247aee47670f7ce243'
 }
 
 # Use the database for sessions instead of the cookie-based default,

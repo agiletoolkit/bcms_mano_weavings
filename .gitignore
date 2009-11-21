@@ -1,8 +1,12 @@
-cache/*.*
+cache/*
 db/*.sqlite3.db
 config/database.yml
-tmp/*.*
+tmp/*
+coverage/**/*
 .DS_Store
-db/*.sqlite3
-log/*.*
+log/*
 .idea/*
+db/schema.rb
+*.gem
+.dotest
+public/cache
