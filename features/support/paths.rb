@@ -10,7 +10,9 @@ module NavigationHelpers
     
     when /the home\s?page/
       '/'
-    
+    when /the list of weavers/
+      '/cms/weavers'
+
     # Add more mappings here.
     # Here is a more fancy example:
     #

@@ -48,3 +48,16 @@ This module will add new data types, like content blocks, so you need to run the
 
 #### 5. Installation Complete
 * Open your browser to localhost:3000/cms/portlets and login
+
+
+## Running the cucumber tests
+The cucumber tests test the integration.
+
+#### 1. Make sure you have the required gems installed
+sudo rake gems:install RAILS_ENV=test
+
+#### 2. Populate the Database with migrations so the cmsadmin user exists
+rake db:migrate:reset RAILS_ENV=test
+
+#### 3. Run the cucumber features
+cucumber features

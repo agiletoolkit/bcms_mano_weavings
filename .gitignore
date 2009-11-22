@@ -1,5 +1,6 @@
 cache/*
 db/*.sqlite3.db
+db/test.sqlite3
 config/database.yml
 tmp/*
 coverage/**/*
