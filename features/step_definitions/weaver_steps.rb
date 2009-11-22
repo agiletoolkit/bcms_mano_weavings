@@ -10,3 +10,11 @@ Given /^I am logged in as "([^\"]*)" with password "([^\"]*)"$/ do |username, pa
   fill_in "password", :with => password
   click_button "LOGIN"
 end
+
+Given /^I have no weavers$/ do
+  Weaver.delete_all
+end
+
+Then /^I should have ([0-9]+) weaver$/ do |count|
+  Weaver.count.should == count.to_i
+end
