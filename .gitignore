@@ -1,5 +1,5 @@
 cache/*
-db/*.sqlite3.db
+db/*.sqlite3
 db/test.sqlite3
 config/database.yml
 tmp/*
