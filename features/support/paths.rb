@@ -12,6 +12,8 @@ module NavigationHelpers
       '/'
     when /the list of weavers/
       '/cms/weavers'
+    when /the list of weaving types/
+      '/cms/weaving_types'
 
     # Add more mappings here.
     # Here is a more fancy example:

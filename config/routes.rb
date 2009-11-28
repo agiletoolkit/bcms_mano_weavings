@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.namespace('cms') {|cms| cms.content_blocks :weaving_types }
+
   map.namespace('cms') {|cms| cms.content_blocks :weavers }
 
   map.routes_for_browser_cms
