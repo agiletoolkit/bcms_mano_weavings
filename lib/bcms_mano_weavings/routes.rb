@@ -3,6 +3,7 @@ module Cms::Routes
     namespace(:cms) do |cms|
       cms.content_blocks :weavers
       cms.content_blocks :weaving_types
+      cms.content_blocks :wool_types
     end  
   end
 end
