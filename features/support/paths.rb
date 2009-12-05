@@ -12,6 +12,8 @@ module NavigationHelpers
       '/'
     when /the list of weavers/
       '/cms/weavers'
+    when /the list of weavings/
+      '/cms/weavings'
     when /the list of weaving types/
       '/cms/weaving_types'
     when /the list of wool types/

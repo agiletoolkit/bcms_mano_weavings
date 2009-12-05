@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.namespace('cms') {|cms| cms.content_blocks :weavings }
+
   map.namespace('cms') {|cms| cms.content_blocks :wool_types }
 
   map.namespace('cms') {|cms| cms.content_blocks :weaving_types }
