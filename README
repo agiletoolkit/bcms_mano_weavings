@@ -44,6 +44,7 @@ You should messages checking to see if files already exist or were created.
 This module will add new data types, like content blocks, so you need to run the migrations to add them to your project.
 
 		rake db:migrate
+		rake db:seed # Optionally create a weavings section and some pages
 		script/server
 
 #### 5. Installation Complete
