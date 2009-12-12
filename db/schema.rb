@@ -433,9 +433,11 @@ ActiveRecord::Schema.define(:version => 20091205085832) do
     t.string   "name"
     t.string   "last_name"
     t.text     "description"
-    t.boolean  "published",       :default => false
-    t.boolean  "deleted",         :default => false
-    t.boolean  "archived",        :default => false
+    t.integer  "attachment_id"
+    t.integer  "attachment_version"
+    t.boolean  "published",          :default => false
+    t.boolean  "deleted",            :default => false
+    t.boolean  "archived",           :default => false
     t.string   "version_comment"
     t.integer  "created_by_id"
     t.integer  "updated_by_id"
@@ -445,13 +447,15 @@ ActiveRecord::Schema.define(:version => 20091205085832) do
 
   create_table "weavers", :force => true do |t|
     t.integer  "version"
-    t.integer  "lock_version",  :default => 0
+    t.integer  "lock_version",       :default => 0
     t.string   "name"
     t.string   "last_name"
     t.text     "description"
-    t.boolean  "published",     :default => false
-    t.boolean  "deleted",       :default => false
-    t.boolean  "archived",      :default => false
+    t.integer  "attachment_id"
+    t.integer  "attachment_version"
+    t.boolean  "published",          :default => false
+    t.boolean  "deleted",            :default => false
+    t.boolean  "archived",           :default => false
     t.integer  "created_by_id"
     t.integer  "updated_by_id"
     t.datetime "created_at"

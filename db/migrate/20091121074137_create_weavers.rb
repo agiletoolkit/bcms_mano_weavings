@@ -4,6 +4,8 @@ class CreateWeavers < ActiveRecord::Migration
       t.string :name
       t.string :last_name
       t.text :description, :size => (64.kilobytes + 1) 
+      t.belongs_to :attachment
+      t.integer :attachment_version
     end
     
     ContentType.create!(:name => "Weaver", :group_name => "Weavings")
