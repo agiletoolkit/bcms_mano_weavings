@@ -2,7 +2,9 @@ class CreateWoolTypes < ActiveRecord::Migration
   def self.up
     create_content_table :wool_types do |t|
       t.string :name 
-      t.text :description, :size => (64.kilobytes + 1) 
+      t.text :description, :size => (64.kilobytes + 1)
+      t.belongs_to :attachment
+      t.integer :attachment_version
     end
 
     ContentType.create!(:name => "WoolType", :group_name => "Weavings")
