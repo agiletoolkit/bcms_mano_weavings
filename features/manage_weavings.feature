@@ -6,7 +6,6 @@ Feature: Manage Weavers
 	Background:
 		Given I am logged in as "cmsadmin" with password "cmsadmin"
 
-	@focus
 	Scenario: Create Weaver
 	    Given I have no weavers
 	    And I have weavers named Billy and Jane
