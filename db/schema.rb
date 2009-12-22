@@ -469,6 +469,7 @@ ActiveRecord::Schema.define(:version => 20091205085832) do
     t.string   "spanish_name"
     t.integer  "low_stock_level"
     t.text     "description"
+    t.integer  "user_id"
     t.integer  "attachment_id"
     t.integer  "attachment_version"
     t.boolean  "published",          :default => false
@@ -488,6 +489,7 @@ ActiveRecord::Schema.define(:version => 20091205085832) do
     t.string   "spanish_name"
     t.integer  "low_stock_level"
     t.text     "description"
+    t.integer  "user_id"
     t.integer  "attachment_id"
     t.integer  "attachment_version"
     t.boolean  "published",          :default => false

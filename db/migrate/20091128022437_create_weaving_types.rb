@@ -5,6 +5,7 @@ class CreateWeavingTypes < ActiveRecord::Migration
       t.string :spanish_name 
       t.integer :low_stock_level 
       t.text :description, :size => (64.kilobytes + 1)
+      t.belongs_to :user
       t.belongs_to :attachment
       t.integer :attachment_version
     end
