@@ -3,8 +3,9 @@
 	<% @weavings.each do |weaving| %>
 		<% if weaving.published %>
 			<li>
-				<%=h weaving.name %> is a weaving of type <%= weaving.weaving_type.name %> woven by <%= weaving.weaver.name %> using <%= weaving.wool_type.name %> wool and is selling for <%= number_to_currency(weaving.selling_price) %>.
+				<%=h weaving.name %> is a weaving of type <%= weaving.weaving_type.name %> woven by <%= weaving.weaver.name %> using <%= weaving.wool_type.name %> wool and is selling for <%= number_to_currency(weaving.selling_price) %> <%= weaving.add_to_google_cart_button_html %>.
 			</li>
 		<% end %>
 	<% end %>
 </ul>
+<script  id='googlecart-script' type='text/javascript' src='https://checkout.google.com/seller/gsc/v2_2/cart.js?mid=340819281290168' integration='jscart-wizard' post-cart-to-sandbox='true' currency='USD' productWeightUnits='LB'></script>
