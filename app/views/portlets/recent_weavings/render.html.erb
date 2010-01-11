@@ -3,7 +3,7 @@
 	<% @weavings.each do |weaving| %>
 		<% if weaving.published && !weaving.cart_id %>
 			<li>
-				<%=h weaving.name %> is a weaving of type <%= weaving.weaving_type.name %> woven by <%= weaving.weaver.name %> using <%= weaving.wool_type.name %> wool and is selling for <%= number_to_currency(weaving.selling_price) %> <%= weaving.add_to_google_cart_button_html %>.
+				<%=h weaving.name %> is a weaving of type <%= weaving.weaving_type.name %> woven by <%= weaving.weaver.name %> using <%= weaving.wool_type.name %> wool and is selling for <%= number_to_currency(weaving.selling_price) %>.
 			</li>
 			<% form_for weaving, :url => { :controller => "/store", :action => "add_to_cart" } do |f| %>
 				<%= f.hidden_field :id %>
@@ -12,4 +12,3 @@
 		<% end %>
 	<% end %>
 </ul>
-<script  id='googlecart-script' type='text/javascript' src='https://checkout.google.com/seller/gsc/v2_2/cart.js?mid=340819281290168' integration='jscart-wizard' post-cart-to-sandbox='true' currency='USD' productWeightUnits='LB'></script>
