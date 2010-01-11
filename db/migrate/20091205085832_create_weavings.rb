@@ -4,6 +4,7 @@ class CreateWeavings < ActiveRecord::Migration
       t.belongs_to :weaver
       t.belongs_to :weaving_type
       t.belongs_to :wool_type
+      t.belongs_to :cart
       t.decimal :purchase_price_usd 
       t.decimal :purchase_price_bol 
       t.decimal :selling_price 

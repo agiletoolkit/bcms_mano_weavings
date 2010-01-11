@@ -1,12 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.namespace('cms') {|cms| cms.content_blocks :weavings }
-
-  map.namespace('cms') {|cms| cms.content_blocks :wool_types }
-
-  map.namespace('cms') {|cms| cms.content_blocks :weaving_types }
-
-  map.namespace('cms') {|cms| cms.content_blocks :weavers }
-
+  map.routes_for_bcms_mano_weavings
   map.routes_for_browser_cms
 
   # The priority is based upon order of creation: first created -> highest priority.

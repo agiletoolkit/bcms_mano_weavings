@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091205085832) do
+ActiveRecord::Schema.define(:version => 20091227054704) do
 
   create_table "attachment_versions", :force => true do |t|
     t.integer  "attachment_id"
@@ -46,6 +46,11 @@ ActiveRecord::Schema.define(:version => 20091205085832) do
     t.boolean  "archived",       :default => false
     t.integer  "created_by_id"
     t.integer  "updated_by_id"
+  end
+
+  create_table "carts", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "categories", :force => true do |t|
@@ -507,6 +512,7 @@ ActiveRecord::Schema.define(:version => 20091205085832) do
     t.integer  "weaver_id"
     t.integer  "weaving_type_id"
     t.integer  "wool_type_id"
+    t.integer  "cart_id"
     t.decimal  "purchase_price_usd"
     t.decimal  "purchase_price_bol"
     t.decimal  "selling_price"
@@ -528,6 +534,7 @@ ActiveRecord::Schema.define(:version => 20091205085832) do
     t.integer  "weaver_id"
     t.integer  "weaving_type_id"
     t.integer  "wool_type_id"
+    t.integer  "cart_id"
     t.decimal  "purchase_price_usd"
     t.decimal  "purchase_price_bol"
     t.decimal  "selling_price"

@@ -1,10 +1,14 @@
 <h1>Last Ten Weavings</h1>
 <ul>
 	<% @weavings.each do |weaving| %>
-		<% if weaving.published %>
+		<% if weaving.published && !weaving.cart_id %>
 			<li>
 				<%=h weaving.name %> is a weaving of type <%= weaving.weaving_type.name %> woven by <%= weaving.weaver.name %> using <%= weaving.wool_type.name %> wool and is selling for <%= number_to_currency(weaving.selling_price) %> <%= weaving.add_to_google_cart_button_html %>.
 			</li>
+			<% form_for weaving, :url => { :controller => "/store", :action => "add_to_cart" } do |f| %>
+				<%= f.hidden_field :id %>
+				<%= f.submit "Add to Cart" %>
+			<% end %>
 		<% end %>
 	<% end %>
 </ul>
