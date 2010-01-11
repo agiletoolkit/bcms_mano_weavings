@@ -1,0 +1,17 @@
+<h1>Cart</h1>
+<% if @weavings_in_cart.empty? %>
+	Your cart is empty
+<% else %>
+	Your Cart Currently Contains
+	<ul>
+		<% @weavings_in_cart.each do |weaving| %>
+			<li>
+				<%=h weaving.name %> is a weaving of type <%= weaving.weaving_type.name %> woven by <%= weaving.weaver.name %> using <%= weaving.wool_type.name %> wool and is selling for <%= number_to_currency(weaving.selling_price) %>.
+				<% form_for weaving, :url => { :controller => "/store", :action => "remove_from_cart" } do |f| %>
+					<%= f.hidden_field :id %>
+					<%= f.submit "Remove from Cart" %>
+				<% end %>
+			</li>
+		<% end %>
+	</ul>
+<% end %>
