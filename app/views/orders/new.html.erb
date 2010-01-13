@@ -1,0 +1,30 @@
+<% form_for @order do |f| %>
+  <%= f.error_messages %>
+  <% if @order.paypal_express_token.blank? %>
+    Token is blank, should probably redirect or something
+  <% else %>
+    <%= f.hidden_field :paypal_express_token %>
+    <p>Name: <%=h @order.first_name %> <%=h @order.last_name %></p>
+	<p>Contact Email: <%=h @order.email %></p>
+	<p>Your paypal status is: <%=h @order.payer_status %></p>
+	<p>Your address status is: <%=h @order.address_status %></p>
+	<p>
+		<h3>Shipping to</h3>
+		Name: <%=h @order.ship_to_name %> <br />
+		Street Line 1: <%=h @order.ship_to_street_line_1 %> <br />
+		Street Line 2: <%=h @order.ship_to_street_line_2 %> <br />
+		City: <%=h @order.ship_to_city %> <br />
+		State: <%=h @order.ship_to_state %> <br />
+		Country Code: <%=h @order.ship_to_country_code %> <br />
+		Country Name: <%=h @order.ship_to_country_name %> <br />
+		Zip: <%=h @order.ship_to_zip %> <br />
+	</p>
+	<h3>Weavings you are about to purchase:</h3>
+	<% @order.cart.weavings.each do |weaving| %>
+		<li>
+			<%=h weaving.name %> is a weaving of type <%= weaving.weaving_type.name %> woven by <%= weaving.weaver.name %> using <%= weaving.wool_type.name %> wool and is selling for <%= number_to_currency(weaving.selling_price) %>.
+		</li>
+	<% end %>
+  <% end %>
+  <p><%= f.submit "Complete Order" %></p>
+<% end %>

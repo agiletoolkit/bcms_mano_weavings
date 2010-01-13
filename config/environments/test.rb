@@ -32,3 +32,8 @@ config.gem "rspec", :lib => false, :version => ">=1.2.9"
 config.gem "rspec-rails", :lib => false, :version => ">=1.2.9"
 config.gem "webrat", :lib => false, :version => ">=0.5.3"
 config.gem "cucumber", :lib => false, :version => ">=0.4.3"
+
+config.after_initialize do
+  ActiveMerchant::Billing::Base.mode = :test
+  ::EXPRESS_GATEWAY = ActiveMerchant::Billing::BogusGateway.new
+end

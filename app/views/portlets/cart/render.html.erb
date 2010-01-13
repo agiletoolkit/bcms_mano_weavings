@@ -14,4 +14,6 @@
 			</li>
 		<% end %>
 	</ul>
+	<p>Total: <%= number_to_currency @cart.total_price %></p>
+	<%= link_to image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), '/orders/new/paypal_express' %>
 <% end %>

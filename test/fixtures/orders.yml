@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  cart_id: 1
+  ip_address: MyString
+  first_name: MyString
+  last_name: MyString
+  paypal_express_token: MyString
+  paypal_express_payer_id: MyString
+
+two:
+  cart_id: 1
+  ip_address: MyString
+  first_name: MyString
+  last_name: MyString
+  paypal_express_token: MyString
+  paypal_express_payer_id: MyString

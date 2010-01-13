@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091227054704) do
+ActiveRecord::Schema.define(:version => 20100112015954) do
 
   create_table "attachment_versions", :force => true do |t|
     t.integer  "attachment_id"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(:version => 20091227054704) do
   end
 
   create_table "carts", :force => true do |t|
+    t.datetime "purchased_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -263,6 +264,40 @@ ActiveRecord::Schema.define(:version => 20091227054704) do
     t.boolean  "archived",      :default => false
     t.integer  "created_by_id"
     t.integer  "updated_by_id"
+  end
+
+  create_table "order_transactions", :force => true do |t|
+    t.integer  "order_id"
+    t.string   "action"
+    t.integer  "amount"
+    t.boolean  "success"
+    t.string   "authorization"
+    t.string   "message"
+    t.text     "params"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "orders", :force => true do |t|
+    t.integer  "cart_id"
+    t.string   "ip_address"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "payer_status"
+    t.string   "ship_to_name"
+    t.string   "ship_to_street_line_1"
+    t.string   "ship_to_street_line_2"
+    t.string   "ship_to_city"
+    t.string   "ship_to_state"
+    t.string   "ship_to_country_code"
+    t.string   "ship_to_country_name"
+    t.string   "ship_to_zip"
+    t.string   "address_status"
+    t.string   "paypal_express_token"
+    t.string   "paypal_express_payer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "page_route_options", :force => true do |t|

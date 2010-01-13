@@ -16,3 +16,12 @@ config.action_controller.perform_caching             = false
 # Don't care if the mailer can't send
 config.action_mailer.raise_delivery_errors = false
 SITE_DOMAIN="localhost:3000"
+
+config.after_initialize do
+  ActiveMerchant::Billing::Base.mode = :test
+  ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new({
+    :login => "seller_1263249328_per_api1.gmail.com",
+    :password => "MTFH3E75L4GACBJ9",
+    :signature => "AFcWxV21C7fd0v3bYYYRCpSSRl31AqEv4Qbz7F1Q62PcZ9P0IEuAfqck"
+  })
+end
