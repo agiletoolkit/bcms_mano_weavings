@@ -28,12 +28,12 @@ namespace :db do
 
         # Create the recent weavings portlet and put it on the /weavings/weavings page
         template = ''
-        File.open(File.join(File.dirname(__FILE__), '..', 'app', 'views', 'portlets', 'recent_weavings', 'render.html.erb'), "r") { |f| template = f.read }
+        File.open(RAILS_ROOT + '/app/views/portlets/recent_weavings/render.html.erb', "r") { |f| template = f.read }
         portlet = "recent_weavings_portlet".classify.constantize.new("name" => "Last 10 Weavings", "connect_to_page_id" => Page.find_by_path('/weavings/weavings').id, "handler" => "erb", "template" => template, "limit" => 10, "connect_to_container" => "main")
         portlet.save
 
         # Create the cart portlet and put it on the /weavings/weavings page
-        File.open(File.join(File.dirname(__FILE__), '..', 'app', 'views', 'portlets', 'cart', 'render.html.erb'), "r") { |f| template = f.read }
+        File.open(RAILS_ROOT + '/app/views/portlets/cart/render.html.erb', "r") { |f| template = f.read }
         portlet = "cart_portlet".classify.constantize.new("name" => "Cart", "connect_to_page_id" => Page.find_by_path('/weavings/weavings').id, "handler" => "erb", "template" => template, "connect_to_container" => "main")
         portlet.save
       end
