@@ -1,10 +1,9 @@
 class CartPortlet < Portlet
   def render
-    @cart = @current_cart
-    if @cart
-      @weavings_in_cart = @cart.weavings
-    else
-      @weavings_in_cart = []
+    @cart = Cart.current_cart(session)
+    @weavings_in_cart = []
+    if @cart && @cart.weavings
+        @weavings_in_cart = @cart.weavings
     end
   end
 end
