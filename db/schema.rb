@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100112015954) do
+ActiveRecord::Schema.define(:version => 20100116002152) do
 
   create_table "attachment_versions", :force => true do |t|
     t.integer  "attachment_id"
@@ -175,6 +175,12 @@ ActiveRecord::Schema.define(:version => 20100112015954) do
     t.datetime "updated_at"
   end
 
+  create_table "google_checkout_pollings", :force => true do |t|
+    t.string   "notification_data_token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "group_permissions", :force => true do |t|
     t.integer "group_id"
     t.integer "permission_id"
@@ -280,6 +286,7 @@ ActiveRecord::Schema.define(:version => 20100112015954) do
 
   create_table "orders", :force => true do |t|
     t.integer  "cart_id"
+    t.string   "status"
     t.string   "ip_address"
     t.string   "first_name"
     t.string   "last_name"
@@ -296,6 +303,8 @@ ActiveRecord::Schema.define(:version => 20100112015954) do
     t.string   "address_status"
     t.string   "paypal_express_token"
     t.string   "paypal_express_payer_id"
+    t.string   "payment_processor"
+    t.string   "google_order_number"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

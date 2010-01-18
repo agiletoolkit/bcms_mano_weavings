@@ -37,4 +37,10 @@ config.after_initialize do
     :password => "production_password",
     :signature => "production_signature"
   })
+
+  ::GOOGLE_CHECKOUT_CONFIGURATION = {
+    :merchant_id => '??',
+    :merchant_key => '??',
+    :use_sandbox => false
+  }
 end

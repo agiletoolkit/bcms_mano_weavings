@@ -24,4 +24,10 @@ config.after_initialize do
     :password => "MTFH3E75L4GACBJ9",
     :signature => "AFcWxV21C7fd0v3bYYYRCpSSRl31AqEv4Qbz7F1Q62PcZ9P0IEuAfqck"
   })
+
+  ::GOOGLE_CHECKOUT_CONFIGURATION = {
+    :merchant_id => '340819281290168',
+    :merchant_key => '_lqbCFJNb1nc7t45xPeEjg',
+    :use_sandbox => true
+  }
 end

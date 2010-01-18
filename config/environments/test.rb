@@ -36,4 +36,10 @@ config.gem "cucumber", :lib => false, :version => ">=0.4.3"
 config.after_initialize do
   ActiveMerchant::Billing::Base.mode = :test
   ::EXPRESS_GATEWAY = ActiveMerchant::Billing::BogusGateway.new
+
+  ::GOOGLE_CHECKOUT_CONFIGURATION = {
+    :merchant_id => '??',
+    :merchant_key => '??',
+    :use_sandbox => true
+  }
 end

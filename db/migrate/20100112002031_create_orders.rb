@@ -2,6 +2,7 @@ class CreateOrders < ActiveRecord::Migration
   def self.up
     create_table :orders do |t|
       t.integer :cart_id
+      t.string :status
       t.string :ip_address
       t.string :first_name
       t.string :last_name
@@ -18,6 +19,8 @@ class CreateOrders < ActiveRecord::Migration
       t.string :address_status
       t.string :paypal_express_token
       t.string :paypal_express_payer_id
+      t.string :payment_processor
+      t.string :google_order_number
 
       t.timestamps
     end

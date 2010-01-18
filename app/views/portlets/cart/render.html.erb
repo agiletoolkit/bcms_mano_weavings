@@ -16,4 +16,12 @@
 	</ul>
 	<p>Total: <% if(@cart) %> <%= number_to_currency @cart.total_price %> <% end %></p>
 	<%= link_to image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), '/orders/new/paypal_express' %>
+	<br />or use<br />
+	<div id='google_checkout_button'>
+	    <form method="POST" action="<%= @post_url %>">
+			<%= hidden_field_tag :cart, @cart_xml_b64 %>
+			<%= hidden_field_tag :signature, @signature %>
+			<%= image_submit_tag @img_src, @params %>
+		</form>
+	</div>
 <% end %>

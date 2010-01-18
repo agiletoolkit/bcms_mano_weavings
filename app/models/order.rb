@@ -3,14 +3,33 @@ class Order < ActiveRecord::Base
   has_many :order_transactions
 
   def purchase
-    response = EXPRESS_GATEWAY.purchase(price_in_cents, {
-      :ip => ip_address,
-      :token => paypal_express_token,
-      :payer_id => paypal_express_payer_id
-    })
-    transaction = order_transactions.create!(:action => "purchase", :amount => price_in_cents, :response => response)
-    cart.update_attribute(:purchased_at, Time.now) if response.success?
-    transaction
+    if self.payment_processor == 'paypal_express'
+      # Handle paypal
+      response = EXPRESS_GATEWAY.purchase(price_in_cents, {
+        :ip => ip_address,
+        :token => paypal_express_token,
+        :payer_id => paypal_express_payer_id
+      })
+      transaction = order_transactions.create!(:action => "purchase", :amount => price_in_cents, :response => response)
+      cart.update_attribute(:purchased_at, Time.now) if response.success?
+      transaction
+    else
+      # Handle google checkout
+      front_end = Google4R::Checkout::Frontend.new(GOOGLE_CHECKOUT_CONFIGURATION)
+      front_end.tax_table_factory = GoogleCheckoutTaxTableFactory.new
+
+      if front_end
+        charge_command = front_end.create_charge_order_command
+        # FIXME: Adding on the hardcoded $10 for shipping
+        charge_command.amount = Money.new(price_in_cents + 1000)
+        charge_command.google_order_number = self.google_order_number
+        charge_command.send_to_google_checkout
+      end
+      # FIXME: Adding the hard coded shipping on here
+      transaction = order_transactions.create!(:action => "purchase", :amount => price_in_cents + 10000, :success => true)
+      cart.update_attribute(:purchased_at, Time.now)
+      transaction
+    end
   end
 
   def price_in_cents
@@ -25,6 +44,7 @@ class Order < ActiveRecord::Base
     write_attribute(:paypal_express_token, token)
     if new_record? && !token.blank?
       details = EXPRESS_GATEWAY.details_for(token)
+      self.status = 'new'
       self.paypal_express_payer_id = details.payer_id
       self.first_name = details.params["first_name"]
       self.last_name = details.params["last_name"]
@@ -39,7 +59,6 @@ class Order < ActiveRecord::Base
       self.ship_to_country_name = details.params["country_name"]
       self.ship_to_zip = details.params["postal_code"]
       self.address_status = details.params["address_status"]
-      logger.debug "Details are: " + details.to_s
     end
   end
 end

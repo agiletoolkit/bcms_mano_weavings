@@ -1,0 +1,7 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  notification_data_token: MyString
+
+two:
+  notification_data_token: MyString
