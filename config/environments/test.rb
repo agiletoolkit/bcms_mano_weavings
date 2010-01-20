@@ -31,7 +31,8 @@ SITE_DOMAIN="localhost:3000"
 config.gem "rspec", :lib => false, :version => ">=1.2.9"
 config.gem "rspec-rails", :lib => false, :version => ">=1.2.9"
 config.gem "webrat", :lib => false, :version => ">=0.5.3"
-config.gem "cucumber", :lib => false, :version => ">=0.4.3"
+config.gem "cucumber", :lib => false, :version => ">=0.6.2"
+config.gem "cucumber-rails", :lib => false, :version => ">=0.2.4"
 
 config.after_initialize do
   ActiveMerchant::Billing::Base.mode = :test

@@ -14,3 +14,4 @@ public/cache
 *.tmp*~
 .loadpath
 .project
+rerun.txt
