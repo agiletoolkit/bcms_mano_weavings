@@ -9,7 +9,8 @@
 				<p>Your paypal status is: <%=h @order.payer_status %></p>
 				<p>Your paypal address status is: <%=h @order.address_status %></p>
 			<% end %>
-			<p>Order Status: <%=h @order.status %></p>
+			<p>Order Financial State: <%=h @order.financial_state %></p>
+			<p>Order Fulfillment State: <%=h @order.fulfillment_state %></p>
 		    <p>Name: <%=h @order.first_name %> <%=h @order.last_name %></p>
 			<p>Contact Email: <%=h @order.email %></p>
 			<% if @order.payment_processor == 'google_checkout' %>

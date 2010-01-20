@@ -13,6 +13,7 @@ Rails::Initializer.run do |config|
   config.gem 'google4r-checkout', :lib => 'google4r/checkout' # Used with google checkout
   config.gem 'oauth' # Use to encrypt the cart for google checkout
   config.gem 'acts_as_singleton' # Used to store google checkout notification-data-token
+
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
   # -- all .rb files in that directory are automatically loaded.

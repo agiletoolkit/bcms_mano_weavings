@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+  	<p>Hi <%=h @order.first_name %></p>
+	Great news! Your order has shipped, and should arrive soon. Your credit card has successfully been charged for this order. Carrier: <%=h @order.carrier %> - Tracking #: <%=h @order.carrier_tracking_number %>
+    <p>Purchased from:, (insert mano a mano details here</p>
+    <p>Shipping to <%=h @order.ship_to_name %> at <%=h @order.ship_to_street_line_1 %>, <%=h @order.ship_to_city %> in <%=h @order.ship_to_country_code %>.</p>
+	<p>You are purchasing:
+	<ul>
+		<% @order.cart.weavings.each do |weaving| %>
+			<li>
+				<%=h weaving.name %> is a weaving of type <%= weaving.weaving_type.name %> woven by <%= weaving.weaver.name %> using <%= weaving.wool_type.name %> wool and is selling for <%= number_to_currency(weaving.selling_price) %>.
+			</li>
+		<% end %>
+	</ul>
+	</p>
+    <p>Thanks for your purchase and have a great day!</p>
+  </body>
+</html>

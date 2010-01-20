@@ -1,0 +1,15 @@
+<h1><%=h @portlet.name %></h1>
+<ul>
+	<% @orders.each do |order| %>
+		<li>
+			Order for <%=h number_to_currency order.price %> was created on <%=h order.created_at %> and has financial state <%=h order.financial_state %> and fulfillment state <%=h order.fulfillment_state %>.<br />
+			Payment processor is <%=h order.payment_processor %> and it should be shipped to <%=h order.ship_to_name %> at <%=h order.ship_to_street_line_1 %>, <%=h order.ship_to_city %> in <%=h order.ship_to_country_code %>.
+		</li>
+		<% form_for :order, order, :url => { :controller => "/orders", :action => "ship" } do |f| %>
+			<%= f.hidden_field :id %>
+			<%= f.cms_drop_down :carrier, Order.carriers.map{|e| [e, e]} %>
+			Tracking number: <%= f.text_field :carrier_tracking_number, :size => 6 %>
+			<%= f.submit "Ship this order" %>
+		<% end %>
+	<% end %>
+</ul>

@@ -286,7 +286,10 @@ ActiveRecord::Schema.define(:version => 20100116002152) do
 
   create_table "orders", :force => true do |t|
     t.integer  "cart_id"
-    t.string   "status"
+    t.string   "financial_state"
+    t.string   "fulfillment_state"
+    t.string   "carrier"
+    t.string   "carrier_tracking_number"
     t.string   "ip_address"
     t.string   "first_name"
     t.string   "last_name"

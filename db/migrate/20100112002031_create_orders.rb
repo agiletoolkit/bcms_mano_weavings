@@ -2,7 +2,10 @@ class CreateOrders < ActiveRecord::Migration
   def self.up
     create_table :orders do |t|
       t.integer :cart_id
-      t.string :status
+      t.string :financial_state
+      t.string :fulfillment_state
+      t.string :carrier
+      t.string :carrier_tracking_number
       t.string :ip_address
       t.string :first_name
       t.string :last_name
