@@ -18,7 +18,7 @@ Feature: Manage Weavers
 	    And I select "Shawl" from "Weaving type"
 	    And I select "Sheep" from "Wool type"
 	    And I fill in "Purchase price usd" with "45.12"
-	    And I fill in "Purchase price bol" with "94.63"
+	    And I fill in "Purchase price bob" with "94.63"
 	    And I fill in "Selling price" with "105.43"
 	    And I fill in "Description" with "Really nice weaving."
 	    And I press "weaving_submit"

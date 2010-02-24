@@ -7,7 +7,7 @@ class CreateWeavings < ActiveRecord::Migration
       t.belongs_to :cart
       t.string :item_number
       t.decimal :purchase_price_usd 
-      t.decimal :purchase_price_bol 
+      t.decimal :purchase_price_bob
       t.decimal :selling_price 
       t.text :description, :size => (64.kilobytes + 1) end
 

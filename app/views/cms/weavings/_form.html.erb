@@ -3,6 +3,6 @@
 <%= f.cms_drop_down :weaving_type_id, WeavingType.all(:order => "name").map{|e| [e.name, e.id]} %>
 <%= f.cms_drop_down :wool_type_id, WoolType.all(:order => "name").map{|e| [e.name, e.id]} %>
 <%= f.cms_text_field :purchase_price_usd %>
-<%= f.cms_text_field :purchase_price_bol %>
+<%= f.cms_text_field :purchase_price_bob %>
 <%= f.cms_text_field :selling_price %>
 <%= f.cms_text_editor :description %>
