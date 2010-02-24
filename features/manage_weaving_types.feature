@@ -1,7 +1,7 @@
 Feature: Manage Weaving Types
 	In order to record information about weavings
 	As a weaving administrator
-	I Want to manage weaving types
+	I Want to create new weaving types, edit existing weaving types, delete weaving types and view all weaving types
 
 	Background:
 		Given I am logged in as "cmsadmin" with password "cmsadmin"

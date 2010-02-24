@@ -15,6 +15,9 @@ require 'cucumber/web/tableish'
 
 require 'webrat'
 require 'webrat/core/matchers'
+# Load factory girl and factories
+require 'factory_girl'
+require File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'spec', 'factories'))
 
 Webrat.configure do |config|
   config.mode = :rails

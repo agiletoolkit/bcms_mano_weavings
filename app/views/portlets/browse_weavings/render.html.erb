@@ -1,0 +1,18 @@
+<% @weaving_types.each do |weaving_type| %>
+	<ul>
+		<li>
+			<%= link_to weaving_type.name, '?type=' + weaving_type.id.to_s %>
+		</li>
+	</ul>
+<% end %>
+
+<% if @search_results_summary %>
+	<h3><%= @search_results_summary %></h3>
+	<% if @weavings_to_browse %>
+		<% @weavings_to_browse.each do |weaving| %>
+			<li>
+				<%=h weaving.name %> is a weaving of type <%= weaving.weaving_type.name %> woven by <%= weaving.weaver.name %> using <%= weaving.wool_type.name %> wool and is selling for <%= number_to_currency(weaving.selling_price) %>.
+			</li>
+		<% end %>
+	<% end %>
+<% end %>

@@ -1,4 +1,4 @@
-<%= f.cms_text_field :name, :label => "Item Number" %>
+<%= f.cms_text_field :item_number %>
 <%= f.cms_drop_down :weaver_id, Weaver.all(:order => "name").map{|e| [e.name, e.id]} %>
 <%= f.cms_drop_down :weaving_type_id, WeavingType.all(:order => "name").map{|e| [e.name, e.id]} %>
 <%= f.cms_drop_down :wool_type_id, WoolType.all(:order => "name").map{|e| [e.name, e.id]} %>

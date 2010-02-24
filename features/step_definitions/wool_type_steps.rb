@@ -4,7 +4,7 @@ end
 
 Given /^I have wool types named (.+)$/ do |names|
   names.split(' and ').each do |name|
-    WoolType.create!(:name => name)
+    Factory(:wool_type, :name => name)
   end
 end
 

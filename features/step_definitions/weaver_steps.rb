@@ -1,6 +1,6 @@
 Given /^I have weavers named (.+)$/ do |names|
   names.split(' and ').each do |name|
-    Weaver.create!(:name => name)
+    Factory(:weaver, :name => name)
   end
 end
 

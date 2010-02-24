@@ -4,7 +4,7 @@ end
 
 Given /^I have weaving types named (.+)$/ do |names|
   names.split(' and ').each do |name|
-    WeavingType.create!(:name => name)
+    Factory(:weaving_type, :name => name)
   end
 end
 
@@ -15,6 +15,10 @@ Given /^the following user records$/ do |table|
       current_user.groups << Group.find_by_name(group)
     end
   end
+end
+
+When /^I browse weavings by type ([^\"]*)$/ do |weaving_type|
+  click_link weaving_type
 end
 
 Then /^I should have ([0-9]+) weaving types?$/ do |count|

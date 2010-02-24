@@ -18,6 +18,8 @@ module NavigationHelpers
       '/cms/weaving_types'
     when /the list of wool types/
       '/cms/wool_types'
+    when /browse weavings page/
+      '/weavings/items-for-sale'
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
