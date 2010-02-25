@@ -37,14 +37,14 @@ namespace :db do
         portlet = "cart_portlet".classify.constantize.new("name" => "Cart", "connect_to_page_id" => Page.find_by_path('/weavings/weavings').id, "handler" => "erb", "template" => template, "connect_to_container" => "main")
         portlet.save
 
-        # Create the weavings portlet and put it on the /weavings/weaving page (for convinience at the moment)
+        # Create the orders portlet and put it on the /weavings/weaving page (for convinience at the moment)
         File.open(RAILS_ROOT + '/app/views/portlets/orders/render.html.erb', "r") { |f| template = f.read }
-        portlet = "orders_portlet".classify.constantize.new("name" => "Orders", "connect_to_page_id" => Page.find_by_path('/weavings/weavings').id, "handler" => "erb", "template" => template, :results_per_page => 100, "connect_to_container" => "main")
+        portlet = "orders_portlet".classify.constantize.new("name" => "Orders", "connect_to_page_id" => Page.find_by_path('/weavings/weavings').id, "handler" => "erb", "template" => template, :results_per_page => 50, "connect_to_container" => "main")
         portlet.save
 
-        # Create the weavings portlet and put it on the /weavings/weaving page (for convinience at the moment)
+        # Create the browse weavings portlet and put it on the /weavings/items-for-sale page (for convinience at the moment)
         File.open(RAILS_ROOT + '/app/views/portlets/browse_weavings/render.html.erb', "r") { |f| template = f.read }
-        portlet = "browse_weavings_portlet".classify.constantize.new("name" => "Browse Weavings", "connect_to_page_id" => Page.find_by_path('/weavings/weavings').id, "handler" => "erb", "template" => template, :results_per_page => 100, "connect_to_container" => "main")
+        portlet = "browse_weavings_portlet".classify.constantize.new("name" => "Browse Weavings", "connect_to_page_id" => Page.find_by_path('/weavings/items-for-sale').id, "handler" => "erb", "template" => template, :results_per_page => 20, "connect_to_container" => "main")
         portlet.save
       end
     end

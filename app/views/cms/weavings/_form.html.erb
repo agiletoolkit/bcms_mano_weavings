@@ -5,4 +5,10 @@
 <%= f.cms_text_field :purchase_price_usd %>
 <%= f.cms_text_field :purchase_price_bob %>
 <%= f.cms_text_field :selling_price %>
+<%= f.cms_file_field :weaving_photo_front, :label => "Front Photo" %>
+<% if false %>
+	<p><b>Photo Front:</b> <br/><br/><img src="<%= @content_block.weaving_photos[0].attachment_link %>" alt="Example Photo 1" height="480px" width="640px"><br/></p>
+<% end %>
+<%= f.cms_file_field :weaving_photo_back, :label => "Back Photo" %>
+<%= f.cms_file_field :weaving_photo_misc, :label => "Misc Photo" %>
 <%= f.cms_text_editor :description %>

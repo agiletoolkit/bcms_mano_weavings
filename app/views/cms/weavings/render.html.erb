@@ -7,3 +7,6 @@
 <p><b>Purchase Price BOB:</b> <%= @content_block.purchase_price_bob %></p>
 <p><b>Selling Price:</b> <%= @content_block.selling_price %></p>
 <p><b>Description:</b> <%= @content_block.description %></p>
+<p><b>Photo Front:</b> <br/><br/><img src="<%= @content_block.weaving_photos[0].attachment_link %>" alt="Example Photo 1" height="480px" width="640px"><br/></p>
+<p><b>Photo Back:</b> <br/><br/><img src="<%= @content_block.weaving_photos[1].attachment_link %>" alt="Example Photo 2" height="480px" width="640px"><br/></p>
+<p><b>Photo Misc:</b> <br/><br/><img src="<%= @content_block.weaving_photos[2].attachment_link %>" alt="Example Photo 2" height="480px" width="640px"><br/></p>

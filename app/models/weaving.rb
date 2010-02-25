@@ -27,6 +27,7 @@ class Weaving < ActiveRecord::Base
   belongs_to :weaving_type
   belongs_to :wool_type
   belongs_to :cart
+  has_many :weaving_photos
 
   # Weavings should be identified by their item number but BrowserCMS is hell bent on using :name
   # Created this so this module can refer to item_number and name will just contain a copy of item_number

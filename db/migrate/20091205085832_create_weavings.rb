@@ -8,8 +8,9 @@ class CreateWeavings < ActiveRecord::Migration
       t.string :item_number
       t.decimal :purchase_price_usd 
       t.decimal :purchase_price_bob
-      t.decimal :selling_price 
-      t.text :description, :size => (64.kilobytes + 1) end
+      t.decimal :selling_price
+      t.text :description, :size => (64.kilobytes + 1)
+    end
 
     ContentType.create!(:name => "Weaving", :group_name => "Weavings")
   end
