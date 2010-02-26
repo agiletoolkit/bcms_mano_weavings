@@ -75,9 +75,9 @@ describe "Weaving" do
     weaving.save
 
     # When I search for the item_number the weaving should be in the result set
-    Weaving.search(:term => 'foo').find_all{|w| w == weaving }.size.should be 1
+    Weaving.search(:term => 'foo').find_all{|w| w == weaving }.size.should be(1)
 
     # When I search for the name the weaving should not be in the result set
-    Weaving.search(:term => 'bar').find_all{|w| w == weaving }.size.should be 0
+    Weaving.search(:term => 'bar').find_all{|w| w == weaving }.size.should be(0)
   end
 end
