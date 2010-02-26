@@ -1,6 +1,6 @@
 class CreateWeavers < ActiveRecord::Migration
   def self.up
-    create_content_table :weavers do |t|
+    create_versioned_table :weavers do |t|
       t.string :name
       t.string :last_name
       t.text :description, :size => (64.kilobytes + 1) 

@@ -1,6 +1,6 @@
 class CreateWoolTypes < ActiveRecord::Migration
   def self.up
-    create_content_table :wool_types do |t|
+    create_versioned_table :wool_types do |t|
       t.string :name 
       t.text :description, :size => (64.kilobytes + 1)
       t.belongs_to :attachment

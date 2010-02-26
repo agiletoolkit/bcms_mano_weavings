@@ -1,6 +1,6 @@
 class CreateWeavingTypes < ActiveRecord::Migration
   def self.up
-    create_content_table :weaving_types do |t|
+    create_versioned_table :weaving_types do |t|
       t.string :name 
       t.string :spanish_name 
       t.integer :low_stock_level 

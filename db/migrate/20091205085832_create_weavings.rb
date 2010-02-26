@@ -1,6 +1,6 @@
 class CreateWeavings < ActiveRecord::Migration
   def self.up
-    create_content_table :weavings do |t|
+    create_versioned_table :weavings do |t|
       t.belongs_to :weaver
       t.belongs_to :weaving_type
       t.belongs_to :wool_type

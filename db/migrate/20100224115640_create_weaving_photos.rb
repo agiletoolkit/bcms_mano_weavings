@@ -1,6 +1,6 @@
 class CreateWeavingPhotos < ActiveRecord::Migration
   def self.up
-    create_content_table :weaving_photos do |t|
+    create_versioned_table :weaving_photos do |t|
       t.belongs_to :attachment
       t.integer :attachment_version
       t.belongs_to :weaving
