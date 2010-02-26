@@ -47,7 +47,9 @@ end
 
 Rake.application.instance_variable_get('@tasks').delete('default')
 
-spec_prereq = File.exist?(File.join(RAILS_ROOT, 'config', 'database.yml')) ? "db:test:prepare" : :noop
+# Don't run this because it deletes the cmsadmin user the cucumber tests need
+#spec_prereq = File.exist?(File.join(RAILS_ROOT, 'config', 'database.yml')) ? "db:test:prepare" : :noop
+spec_prereq = :noop
 task :noop do
 end
 
