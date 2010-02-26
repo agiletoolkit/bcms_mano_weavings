@@ -13,6 +13,8 @@ SPEC = Gem::Specification.new do |spec|
   spec.files += Dir["lib/bcms_mano_weavings.rb"]
   spec.files += Dir["lib/bcms_mano_weavings/*"]
   spec.files += Dir["rails/init.rb"]
+  spec.files += Dir["db/seeds.rb"]
+  spec.files += Dir["lib/tasks/seed_weavings_sample_data.rake"]
   spec.has_rdoc = true
   spec.extra_rdoc_files = ["README"]
 end
