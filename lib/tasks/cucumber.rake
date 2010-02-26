@@ -14,13 +14,17 @@ begin
   require 'cucumber/rake/task'
 
   namespace :cucumber do
-    Cucumber::Rake::Task.new({:ok => 'db:test:prepare'}, 'Run features that should pass') do |t|
+    # Changed db:test:prepare to db:migrate:reset because it creates the cmsadmin user that is required for the features
+    # Also rspec seems to break the db for the features
+    Cucumber::Rake::Task.new({:ok => 'db:migrate:reset'}, 'Run features that should pass') do |t|
       t.binary = vendored_cucumber_bin # If nil, the gem's binary is used.
       t.fork = true # You may get faster startup if you set this to false
       t.profile = 'default'
     end
 
-    Cucumber::Rake::Task.new({:wip => 'db:test:prepare'}, 'Run features that are being worked on') do |t|
+    # Changed db:test:prepare to db:migrate:reset because it creates the cmsadmin user that is required for the features
+    # Also rspec seems to break the db for the features
+    Cucumber::Rake::Task.new({:wip => 'db:migrate:reset'}, 'Run features that are being worked on') do |t|
       t.binary = vendored_cucumber_bin
       t.fork = true # You may get faster startup if you set this to false
       t.profile = 'wip'
