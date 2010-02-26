@@ -16,11 +16,13 @@ task :default => [:runcoderun]
     # Make sure everything is run using the test environment
     RAILS_ENV = ENV['RAILS_ENV'] = 'test'
 
-    # Run rspec tests
-    Rake::Task['spec'].invoke
+    # Make sure the database is all migrated
+    Rake::Task['db:migrate'].invoke
 
     # Cucumber needs CMSAdmin user to log in and test so set up the db
     # The user is set up in a migration
-    Rake::Task['db:migrate:reset'].invoke
     Rake::Task['cucumber:ok'].invoke
+
+    # Run rspec tests
+    Rake::Task['spec'].invoke
   end
