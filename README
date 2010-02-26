@@ -51,14 +51,11 @@ This module will add new data types, like content blocks, so you need to run the
 * Open your browser to localhost:3000/cms/portlets and login
 
 
-## Running the cucumber tests
-The cucumber tests test the integration.
+## Running cucumber scenarios and rspec examples (tests)
+Cucumber and rspec are used to verify the behavior of the system.
 
-#### 1. Make sure you have the required gems installed
-sudo rake gems:install RAILS_ENV=test
+#### 1. Run the default rake task
+rake
 
-#### 2. Populate the Database with migrations so the cmsadmin user exists
-rake db:migrate:reset RAILS_ENV=test
-
-#### 3. Run the cucumber features
-cucumber features
+#### 2. If there are problems delete the test db. This should not be needed every time because use_transactional_fixtures is used so the db is not modified
+rm -f db/test.sqlite3
