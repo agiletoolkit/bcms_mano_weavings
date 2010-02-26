@@ -8,7 +8,6 @@ require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
   config.gem 'browsercms'
-  #config.gem 'bcms_mano_weavings'
   config.gem "activemerchant", :lib => "active_merchant" # Used for paypal express
   config.gem 'oauth' # Use to encrypt the cart for google checkout
 

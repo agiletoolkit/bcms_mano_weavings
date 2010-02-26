@@ -51,7 +51,10 @@ spec_prereq = File.exist?(File.join(RAILS_ROOT, 'config', 'database.yml')) ? "db
 task :noop do
 end
 
-task :default => :spec
+# Don't run this by default because it tries to run tests in development environment
+# Which fails on the run code run servers because the google-4r gem is not installed
+# It will be run from the runcoderun task in the main rake file
+#task :default => :spec
 task :stats => "spec:statsetup"
 
 desc "Run all specs in spec directory (excluding plugin specs)"
