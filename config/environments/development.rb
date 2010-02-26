@@ -12,7 +12,9 @@ config.whiny_nils = true
 config.action_controller.consider_all_requests_local = true
 config.action_view.debug_rjs                         = true
 config.action_controller.perform_caching             = false
-config.gem 'google4r-checkout', :lib => 'google4r/checkout' # Used with google checkout
+if !ENV["RUN_CODE_RUN"]
+  config.gem 'google4r-checkout', :lib => 'google4r/checkout' # Used with google checkout
+end
 
 # Don't care if the mailer can't send
 config.action_mailer.raise_delivery_errors = false
