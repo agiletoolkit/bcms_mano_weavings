@@ -26,27 +26,34 @@ namespace :db do
           :wool_type_id => WoolType.find_by_name('Sheep', :first).id, :purchase_price_usd => 123.43, :purchase_price_bob => 32.21,
           :selling_price => 1).publish!
 
-        # Create the recent weavings portlet and put it on the /weavings/weavings page
-        template = ''
-        File.open(RAILS_ROOT + '/app/views/portlets/recent_weavings/render.html.erb', "r") { |f| template = f.read }
-        portlet = "recent_weavings_portlet".classify.constantize.new("name" => "Last 10 Weavings", "connect_to_page_id" => Page.find_by_path('/weavings/weavings').id, "handler" => "erb", "template" => template, :limit => 10, "connect_to_container" => "main")
-        portlet.save
+        # Set up some portlets
+        set_up_portlet "recent_weavings_portlet", 'app/views/portlets/recent_weavings/render.html.erb',
+          { "name" => "Last 10 Weavings", "connect_to_page_id" => Page.find_by_path('/weavings/weavings').id, :limit => 10 }
 
-        # Create the cart portlet and put it on the /weavings/weavings page
-        File.open(RAILS_ROOT + '/app/views/portlets/cart/render.html.erb', "r") { |f| template = f.read }
-        portlet = "cart_portlet".classify.constantize.new("name" => "Cart", "connect_to_page_id" => Page.find_by_path('/weavings/weavings').id, "handler" => "erb", "template" => template, "connect_to_container" => "main")
-        portlet.save
+        set_up_portlet "cart_portlet", 'app/views/portlets/cart/render.html.erb',
+          { "name" => "Cart", "connect_to_page_id" => Page.find_by_path('/weavings/weavings').id }
 
-        # Create the orders portlet and put it on the /weavings/weaving page (for convinience at the moment)
-        File.open(RAILS_ROOT + '/app/views/portlets/orders/render.html.erb', "r") { |f| template = f.read }
-        portlet = "orders_portlet".classify.constantize.new("name" => "Orders", "connect_to_page_id" => Page.find_by_path('/weavings/weavings').id, "handler" => "erb", "template" => template, :results_per_page => 50, "connect_to_container" => "main")
-        portlet.save
+        set_up_portlet "orders_portlet", 'app/views/portlets/orders/render.html.erb',
+          { "name" => "Orders", "connect_to_page_id" => Page.find_by_path('/weavings/weavings').id, :results_per_page => 50 }
 
-        # Create the browse weavings portlet and put it on the /weavings/items-for-sale page (for convinience at the moment)
-        File.open(RAILS_ROOT + '/app/views/portlets/browse_weavings/render.html.erb', "r") { |f| template = f.read }
-        portlet = "browse_weavings_portlet".classify.constantize.new("name" => "Browse Weavings", "connect_to_page_id" => Page.find_by_path('/weavings/items-for-sale').id, "handler" => "erb", "template" => template, :results_per_page => 20, "connect_to_container" => "main")
-        portlet.save
+        set_up_portlet "browse_weavings_portlet", 'app/views/portlets/browse_weavings/render.html.erb',
+          { "name" => "Browse Weavings", "connect_to_page_id" => Page.find_by_path('/weavings/items-for-sale').id, :results_per_page => 20 }
       end
     end
+  end
+  private
+  def set_up_portlet portlet_name, template_path, portlet_arguments
+    template_file = RAILS_ROOT + '/' + template_path
+    template = ''
+    # If the template file does not exist we are running out of the gem so grab the template file from there
+    # TODO: Implement this in a more robust way
+    template_file = '/usr/lib/ruby/gems/1.8/gems/bcms_mano_weavings-1.0.0/' + template_path unless File.exists? template_file
+    File.open(template_file, "r") { |f| template = f.read }
+
+    portlet_arguments[:template] = template
+    portlet_arguments[:handler] = "erb" unless portlet_arguments[:handler]
+    portlet_arguments[:connect_to_container] = "main" unless portlet_arguments[:connect_to_container]
+    portlet = portlet_name.classify.constantize.new(portlet_arguments)
+    portlet.save
   end
 end
