@@ -18,4 +18,5 @@ Factory.define :weaving do |f|
   f.weaving_type { |weaving_type| weaving_type.association(:weaving_type) }
   f.wool_type { |wool_type| wool_type.association(:wool_type) }
   f.weaver { |weaver| weaver.association(:weaver) }
+  f.description 'Weaving description goes here.'
 end
