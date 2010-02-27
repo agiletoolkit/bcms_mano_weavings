@@ -31,6 +31,16 @@ describe "Weaving" do
     weaving.should be_valid
   end
 
+  it "should have a summary description" do
+    # Should not be valid without a summary description
+    weaving = Factory.build(:weaving, :summary_description => nil)
+    weaving.should_not be_valid
+
+    # Should be valid once a summary description is assigned
+    weaving.summary_description = 'Something catchy.'
+    weaving.should be_valid
+  end
+
   it "should have a published weaving type" do
     # Should not be valid without weaving type
     weaving = Factory.build(:weaving, :weaving_type => nil)

@@ -9,6 +9,7 @@ class CreateWeavings < ActiveRecord::Migration
       t.decimal :purchase_price_usd 
       t.decimal :purchase_price_bob
       t.decimal :selling_price
+      t.string :summary_description
       t.text :description, :size => (64.kilobytes + 1)
     end
 

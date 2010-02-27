@@ -20,6 +20,7 @@ Feature: Manage Weavers
 	    And I fill in "Purchase price usd" with "45.12"
 	    And I fill in "Purchase price bob" with "94.63"
 	    And I fill in "Selling price" with "105.43"
+	    And I fill in "Summary Description" with "Summary of it."
 	    And I fill in "Description" with "Really nice weaving."
 	    And I press "weaving_submit"
 	    Then I should see "Weaving '001' was created"
@@ -30,6 +31,7 @@ Feature: Manage Weavers
 	    And I should see "45.12"
 	    And I should see "94.63"
 	    And I should see "105.43"
+	    And I should see "Summary of it."
 	    And I should see "Really nice weaving."
 	    And I should see "draft"
 	    And I should have 1 weaving

@@ -597,11 +597,12 @@ ActiveRecord::Schema.define(:version => 20100224115640) do
     t.decimal  "purchase_price_usd"
     t.decimal  "purchase_price_bob"
     t.decimal  "selling_price"
+    t.string   "summary_description"
     t.text     "description"
     t.string   "name"
-    t.boolean  "published",          :default => false
-    t.boolean  "deleted",            :default => false
-    t.boolean  "archived",           :default => false
+    t.boolean  "published",           :default => false
+    t.boolean  "deleted",             :default => false
+    t.boolean  "archived",            :default => false
     t.string   "version_comment"
     t.integer  "created_by_id"
     t.integer  "updated_by_id"
@@ -611,7 +612,7 @@ ActiveRecord::Schema.define(:version => 20100224115640) do
 
   create_table "weavings", :force => true do |t|
     t.integer  "version"
-    t.integer  "lock_version",       :default => 0
+    t.integer  "lock_version",        :default => 0
     t.integer  "weaver_id"
     t.integer  "weaving_type_id"
     t.integer  "wool_type_id"
@@ -620,11 +621,12 @@ ActiveRecord::Schema.define(:version => 20100224115640) do
     t.decimal  "purchase_price_usd"
     t.decimal  "purchase_price_bob"
     t.decimal  "selling_price"
+    t.string   "summary_description"
     t.text     "description"
     t.string   "name"
-    t.boolean  "published",          :default => false
-    t.boolean  "deleted",            :default => false
-    t.boolean  "archived",           :default => false
+    t.boolean  "published",           :default => false
+    t.boolean  "deleted",             :default => false
+    t.boolean  "archived",            :default => false
     t.integer  "created_by_id"
     t.integer  "updated_by_id"
     t.datetime "created_at"

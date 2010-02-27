@@ -2,6 +2,7 @@ class Weaving < ActiveRecord::Base
   acts_as_content_block
   validates_presence_of :item_number
   validates_uniqueness_of :item_number
+  validates_presence_of :summary_description
   validates_presence_of :description
   validates_each :weaving_type do |record, attr, value|
     if record.weaving_type

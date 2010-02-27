@@ -9,22 +9,22 @@ namespace :db do
         WoolType.create(:name => 'Sheep', :description => 'Some pretty common wool').publish!
         Weaving.create(:item_number => '001', :weaver_id => Weaver.find_by_name('Joe', :first).id, :weaving_type_id => WeavingType.find_by_name('Rug', :first).id,
           :wool_type_id => WoolType.find_by_name('Sheep', :first).id, :purchase_price_usd => 123.43, :purchase_price_bob => 32.21,
-          :selling_price => 231.21).publish!
+          :selling_price => 231.21, :summary_description => 'Summary goes here.', :description => 'Description of weaving here.').publish!
         Weaving.create(:item_number => '002', :weaver_id => Weaver.find_by_name('Joe', :first).id, :weaving_type_id => WeavingType.find_by_name('Rug', :first).id,
           :wool_type_id => WoolType.find_by_name('Sheep', :first).id, :purchase_price_usd => 123.43, :purchase_price_bob => 32.21,
-          :selling_price => 40.12).publish!
+          :selling_price => 40.12, :summary_description => 'Summary goes here.', :description => 'Description of weaving here.').publish!
         Weaving.create(:item_number => '003', :weaver_id => Weaver.find_by_name('Joe', :first).id, :weaving_type_id => WeavingType.find_by_name('Rug', :first).id,
           :wool_type_id => WoolType.find_by_name('Sheep', :first).id, :purchase_price_usd => 123.43, :purchase_price_bob => 32.21,
-          :selling_price => 432).publish!
+          :selling_price => 432, :summary_description => 'Summary goes here.', :description => 'Description of weaving here.').publish!
         Weaving.create(:item_number => '004', :weaver_id => Weaver.find_by_name('Joe', :first).id, :weaving_type_id => WeavingType.find_by_name('Rug', :first).id,
           :wool_type_id => WoolType.find_by_name('Sheep', :first).id, :purchase_price_usd => 123.43, :purchase_price_bob => 32.21,
-          :selling_price => 3).publish!
+          :selling_price => 3, :summary_description => 'Summary goes here.', :description => 'Description of weaving here.').publish!
         Weaving.create(:item_number => '005', :weaver_id => Weaver.find_by_name('Joe', :first).id, :weaving_type_id => WeavingType.find_by_name('Rug', :first).id,
           :wool_type_id => WoolType.find_by_name('Sheep', :first).id, :purchase_price_usd => 123.43, :purchase_price_bob => 32.21,
-          :selling_price => 95).publish!
+          :selling_price => 95, :summary_description => 'Summary goes here.', :description => 'Description of weaving here.').publish!
         Weaving.create(:item_number => '006', :weaver_id => Weaver.find_by_name('Joe', :first).id, :weaving_type_id => WeavingType.find_by_name('Rug', :first).id,
           :wool_type_id => WoolType.find_by_name('Sheep', :first).id, :purchase_price_usd => 123.43, :purchase_price_bob => 32.21,
-          :selling_price => 1).publish!
+          :selling_price => 1, :summary_description => 'Summary goes here.', :description => 'Description of weaving here.').publish!
 
         # Set up some portlets
         set_up_portlet "recent_weavings_portlet", 'app/views/portlets/recent_weavings/render.html.erb',
