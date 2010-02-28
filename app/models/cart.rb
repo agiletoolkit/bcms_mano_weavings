@@ -41,8 +41,8 @@ class Cart < ActiveRecord::Base
       # Adding an item to shopping cart
       weavings.each do |weaving|
         checkout_command.shopping_cart.create_item do |item|
-          item.name = weaving.name
-          item.description = weaving.description
+          item.name = weaving.weaving_type.name
+          item.description = weaving.summary_description
           item.unit_price = Money.new(100 * weaving.selling_price)
           item.quantity = 1 # Weavings are unique so there will only ever be a single weaving
         end
