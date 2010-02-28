@@ -32,7 +32,7 @@ class CartPortlet < Portlet
       :merchant_id => GOOGLE_CHECKOUT_CONFIGURATION[:merchant_id],
       :w => 180,
       :h => 46,
-      :style => "white",
+      :style => "trans",
       :variant => "text",
       :loc => "en_US"
     }.to_a.inject([]){|arr, p| arr << p.join('=')}.join('&')

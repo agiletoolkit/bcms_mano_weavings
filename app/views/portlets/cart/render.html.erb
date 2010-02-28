@@ -6,10 +6,12 @@
 	<ul>
 		<% @weavings_in_cart.each do |weaving| %>
 			<li>
-				<%=h weaving.name %> is a weaving of type <%= weaving.weaving_type.name %> woven by <%= weaving.weaver.name %> using <%= weaving.wool_type.name %> wool and is selling for <%= number_to_currency(weaving.selling_price) %>.
+				<%= number_to_currency(weaving.selling_price) %>.
+				<a style="font-weight: bold;" class="dotted" id="weaving_<%= weaving.id.to_s %>_summary" href="/weavings/weaving?id=<%= weaving.id.to_s %>"><%= weaving.summary_description %></a>
+				<a href="/weavings/weaving?id=<%= weaving.id.to_s %>" id="weaving_<%= weaving.id.to_s %>_photo_link"><img style="border-width: 0px;" alt="photo" width="47px" height="35px" src="<%= weaving.weaving_photos[0] ? weaving.weaving_photos[0].attachment_link : 'broken' %>" id="weaving_<%= weaving.id.to_s %>_photo"></a>
 				<% form_for weaving, :url => { :controller => "/store", :action => "remove_from_cart" } do |f| %>
 					<%= f.hidden_field :id %>
-					<%= f.submit "Remove from Cart" %>
+					<%= image_submit_tag '/images/weavings/remove-from-cart.png' %>
 				<% end %>
 			</li>
 		<% end %>

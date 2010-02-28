@@ -1,0 +1,13 @@
+<p><b>Weaver:</b> <%= @weaving.weaver.name %></p>
+<p><b>Weaver photo:</b> <br/><br/><img src="<%= @weaving.weaver.attachment_link %>" alt="Weaver Photo" height="480px" width="640px"><br/></p>
+<p><b>Weaver Description:</b> <br/><br/><%= @weaving.weaver.description %> <br/></p>
+
+<p><b>Weaving Type:</b> <%= @weaving.weaving_type.name %></p>
+<p><b>Wool Type:</b> <%= @weaving.wool_type.name %></p>
+
+<p><b>Price:</b> <%= number_to_currency @weaving.selling_price %></p>
+<p><b>Summary Description:</b> <%= @weaving.summary_description %></p>
+<p><b>Description:</b> <%= @weaving.description %></p>
+<p><b>Photo Front:</b> <br/><br/><img src="<%= @weaving.weaving_photos[0].attachment_link %>" alt="Example Photo front" height="480px" width="640px"><br/></p>
+<p><b>Photo Back:</b> <br/><br/><img src="<%= @weaving.weaving_photos[1].attachment_link %>" alt="Example Photo back" height="480px" width="640px"><br/></p>
+<p><b>Photo Misc:</b> <br/><br/><img src="<%= @weaving.weaving_photos[2].attachment_link %>" alt="Example Photo misc" height="480px" width="640px"><br/></p>

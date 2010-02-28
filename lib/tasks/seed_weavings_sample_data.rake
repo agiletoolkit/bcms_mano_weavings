@@ -21,6 +21,7 @@ namespace :db do
         create_page(:weaving_process, :name => "Weaving Process", :path => "/weavings/weaving-process", :section => sections(:weavings), :template_file_name => template_file_name, :publish_on_save => true, :hidden => false, :cacheable => true)
         create_page(:weavers, :name => "Weavers", :path => "/weavings/weavers", :section => sections(:weavings), :template_file_name => template_file_name, :publish_on_save => true, :hidden => false, :cacheable => true)
         create_page(:weavings, :name => "Weavings", :path => "/weavings/weavings", :section => sections(:weavings), :template_file_name => template_file_name, :publish_on_save => true, :hidden => false, :cacheable => true)
+        create_page(:weaving, :name => "Weaving", :path => "/weavings/weaving", :section => sections(:weavings), :template_file_name => template_file_name, :publish_on_save => true, :hidden => true, :cacheable => true)
         create_page(:items_for_sale, :name => "Items for Sale", :path => "/weavings/items-for-sale", :section => sections(:weavings), :template_file_name => template_file_name, :publish_on_save => true, :hidden => false, :cacheable => true)
         create_page(:donate, :name => "Donate", :path => "/weavings/donate", :section => sections(:weavings), :template_file_name => template_file_name, :publish_on_save => true, :hidden => false, :cacheable => true)
 
@@ -29,7 +30,7 @@ namespace :db do
 
         # Set up some portlets
         set_up_portlet "recent_weavings_portlet", 'app/views/portlets/recent_weavings/render.html.erb',
-          { "name" => "Last 10 Weavings", "connect_to_page_id" => Page.find_by_path('/weavings/weavings').id, :limit => 10 }
+          { "name" => "What's New?", "connect_to_page_id" => Page.find_by_path('/weavings/weavings').id, :limit => 10 }
 
         set_up_portlet "cart_portlet", 'app/views/portlets/cart/render.html.erb',
           { "name" => "Cart", "connect_to_page_id" => Page.find_by_path('/weavings/weavings').id }
@@ -39,6 +40,9 @@ namespace :db do
 
         set_up_portlet "browse_weavings_portlet", 'app/views/portlets/browse_weavings/render.html.erb',
           { "name" => "Browse Weavings", "connect_to_page_id" => Page.find_by_path('/weavings/items-for-sale').id, :results_per_page => 20 }
+
+        set_up_portlet "weaving_details_portlet", 'app/views/portlets/weaving_details/render.html.erb',
+          { "name" => "Weaving Details", "connect_to_page_id" => Page.find_by_path('/weavings/weaving').id }
       end
     end
 
@@ -51,28 +55,58 @@ namespace :db do
           Weaver.create(:name => 'Joe', :last_name => 'Bloggs', :description => 'An awesome weaver.').publish!
           WeavingType.create(:name => 'Rug', :spanish_name => 'foo', :low_stock_level => 10, :user_id => 0, :description => 'You can stand on it').publish!
           WoolType.create(:name => 'Sheep', :description => 'Some pretty common wool').publish!
-          Weaving.create(:item_number => '001', :weaver_id => Weaver.find_by_name('Joe', :first).id, :weaving_type_id => WeavingType.find_by_name('Rug', :first).id,
+          counter = 1
+          w = Weaving.create(:item_number => '001', :weaver_id => Weaver.find_by_name('Joe', :first).id, :weaving_type_id => WeavingType.find_by_name('Rug', :first).id,
             :wool_type_id => WoolType.find_by_name('Sheep', :first).id, :purchase_price_usd => 123.43, :purchase_price_bob => 32.21,
-            :selling_price => 231.21, :summary_description => 'Summary goes here.', :description => 'Description of weaving here.').publish!
-          Weaving.create(:item_number => '002', :weaver_id => Weaver.find_by_name('Joe', :first).id, :weaving_type_id => WeavingType.find_by_name('Rug', :first).id,
+            :selling_price => 231.21, :summary_description => 'Summary goes here.', :description => 'Description of weaving here.', :published => true)
+          set_up_weaving_photos w, counter ; counter += 3
+          w = Weaving.create(:item_number => '002', :weaver_id => Weaver.find_by_name('Joe', :first).id, :weaving_type_id => WeavingType.find_by_name('Rug', :first).id,
             :wool_type_id => WoolType.find_by_name('Sheep', :first).id, :purchase_price_usd => 123.43, :purchase_price_bob => 32.21,
-            :selling_price => 40.12, :summary_description => 'Summary goes here.', :description => 'Description of weaving here.').publish!
-          Weaving.create(:item_number => '003', :weaver_id => Weaver.find_by_name('Joe', :first).id, :weaving_type_id => WeavingType.find_by_name('Rug', :first).id,
+            :selling_price => 40.12, :summary_description => 'Summary goes here.', :description => 'Description of weaving here.', :published => true)
+          set_up_weaving_photos w, counter ; counter += 3
+          w = Weaving.create(:item_number => '003', :weaver_id => Weaver.find_by_name('Joe', :first).id, :weaving_type_id => WeavingType.find_by_name('Rug', :first).id,
             :wool_type_id => WoolType.find_by_name('Sheep', :first).id, :purchase_price_usd => 123.43, :purchase_price_bob => 32.21,
-            :selling_price => 432, :summary_description => 'Summary goes here.', :description => 'Description of weaving here.').publish!
-          Weaving.create(:item_number => '004', :weaver_id => Weaver.find_by_name('Joe', :first).id, :weaving_type_id => WeavingType.find_by_name('Rug', :first).id,
+            :selling_price => 432, :summary_description => 'Summary goes here.', :description => 'Description of weaving here.', :published => true)
+          set_up_weaving_photos w, counter ; counter += 3
+          w = Weaving.create(:item_number => '004', :weaver_id => Weaver.find_by_name('Joe', :first).id, :weaving_type_id => WeavingType.find_by_name('Rug', :first).id,
             :wool_type_id => WoolType.find_by_name('Sheep', :first).id, :purchase_price_usd => 123.43, :purchase_price_bob => 32.21,
-            :selling_price => 3, :summary_description => 'Summary goes here.', :description => 'Description of weaving here.').publish!
-          Weaving.create(:item_number => '005', :weaver_id => Weaver.find_by_name('Joe', :first).id, :weaving_type_id => WeavingType.find_by_name('Rug', :first).id,
+            :selling_price => 3, :summary_description => 'Summary goes here.', :description => 'Description of weaving here.', :published => true)
+          set_up_weaving_photos w, counter ; counter += 3
+          w = Weaving.create(:item_number => '005', :weaver_id => Weaver.find_by_name('Joe', :first).id, :weaving_type_id => WeavingType.find_by_name('Rug', :first).id,
             :wool_type_id => WoolType.find_by_name('Sheep', :first).id, :purchase_price_usd => 123.43, :purchase_price_bob => 32.21,
-            :selling_price => 95, :summary_description => 'Summary goes here.', :description => 'Description of weaving here.').publish!
-          Weaving.create(:item_number => '006', :weaver_id => Weaver.find_by_name('Joe', :first).id, :weaving_type_id => WeavingType.find_by_name('Rug', :first).id,
+            :selling_price => 95, :summary_description => 'Summary goes here.', :description => 'Description of weaving here.', :published => true)
+          set_up_weaving_photos w, counter ; counter += 3
+          w = Weaving.create(:item_number => '006', :weaver_id => Weaver.find_by_name('Joe', :first).id, :weaving_type_id => WeavingType.find_by_name('Rug', :first).id,
             :wool_type_id => WoolType.find_by_name('Sheep', :first).id, :purchase_price_usd => 123.43, :purchase_price_bob => 32.21,
-            :selling_price => 1, :summary_description => 'Summary goes here.', :description => 'Description of weaving here.').publish!
+            :selling_price => 1, :summary_description => 'I should have an image.', :description => 'Description of weaving here.', :published => true)
+          set_up_weaving_photos w, counter ; counter += 3
           end
       end
   end
   private
+  def set_up_weaving_photos weaving, start_index
+    count = start_index
+    set_up_weaving_photo weaving, 'weavings_test_photos/' + count.to_s + '.jpg', 'weaving_photo_front_' + weaving.id.to_s + '.jpg', 'photo_for_weaving_' + weaving.id.to_s + '_front.jpg'
+    count += 1
+    set_up_weaving_photo weaving, 'weavings_test_photos/' + count.to_s + '.jpg', 'weaving_photo_back_' + weaving.id.to_s + '.jpg', 'photo_for_weaving_' + weaving.id.to_s + '_back.jpg'
+    count += 1
+    set_up_weaving_photo weaving, 'weavings_test_photos/' + count.to_s + '.jpg', 'weaving_photo_misc_' + weaving.id.to_s + '.jpg', 'photo_for_weaving_' + weaving.id.to_s + '_misc.jpg'
+  end
+
+  def set_up_weaving_photo weaving, file_path, original_name, weaving_photo_name
+    require 'test_help'
+    tempfile = ActionController::UploadedTempfile.new(original_name)
+    realfile = File.open file_path
+    open(tempfile.path, 'w') {|f| f << realfile.read}
+    tempfile.original_path = original_name
+    tempfile.content_type = 'image/jpeg'
+
+    photo_front = WeavingPhoto.new :name => weaving_photo_name, :attachment_file => tempfile, :published => true
+    photo_front.weaving = weaving
+    photo_front.save
+    photo_front.publish!
+  end
+
   def set_up_portlet portlet_name, template_path, portlet_arguments
     template_file = RAILS_ROOT + '/' + template_path
     template = ''

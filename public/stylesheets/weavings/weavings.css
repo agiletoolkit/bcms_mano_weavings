@@ -1,0 +1,46 @@
+.weavingCard
+{
+	display:block;
+	overflow:hidden;
+	width:248px;
+	height:320px;
+	float:left;
+	margin-right:5px;
+	margin-bottom:5px;
+	text-align: center;
+}
+
+.weavingPhotoContainer
+{
+	width:235px;
+	height:176px;
+	text-align:center;
+	border:1px solid #999;
+	margin:auto;
+	margin-top: 5px;
+	overflow:hidden;
+	background-color:#fff;
+	padding: 0;
+}
+
+.weavingSummaryContainer
+{
+	text-align:center;
+	font-size:16px;
+	font-family:Arial;
+	margin:5px;
+}
+
+.weavingSummaryContainer .dotted
+{
+	line-height:22px;
+}
+
+.weavingType
+{
+	width:100%;
+	text-align:center;
+	font-size:12px;
+	font-style:italic;
+	margin:5px 0;
+}
